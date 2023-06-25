@@ -1,7 +1,7 @@
 {
-  "name": "prisma-module",
+  "name": "rpa-prisma-module",
   "version": "1.0.0",
-  "description": "",
+  "description": "Module that encapsulates prisma client to be locally installed and accessible by any microservice",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
