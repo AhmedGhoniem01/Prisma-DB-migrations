@@ -67,6 +67,12 @@ model UserAccount {
 
   userAccounts      UserAccount[] @relation("UserAccount")
 
+
+  userLicense       UserLicense? @relation("UserLicenseUserAccount")
+
+  adminLicenses     UserLicense[] @relation("UserLicenseAdminUserAccount")
+
+
   robots    Robot[]
 
   packages Package[]
@@ -137,4 +143,36 @@ model Log {
 
   robotId  Int
 
+}
+
+model UserLicense{
+  id          Int   @id @default(autoincrement())
+
+  admin       UserAccount @relation("UserLicenseAdminUserAccount", fields: [adminID], references: [id])
+
+  adminID     Int 
+
+  user        UserAccount @relation("UserLicenseUserAccount", fields: [userID], references: [id])
+
+  userID      Int @unique
+
+  license     License @relation(fields: [licenseID], references: [id])
+
+  licenseID   Int
+
+  startDate   DateTime
+
+  endDate     DateTime
+}
+
+model License{
+  id    Int @id @default(autoincrement())
+
+  title String  @db.VarChar(50)
+
+  maxTenants  Int?
+
+  maxPackages Int?
+
+  userLicenses  UserLicense[]
 }
