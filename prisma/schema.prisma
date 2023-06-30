@@ -25,7 +25,9 @@ model Robot {
 
   robotAddress String? @unique @db.VarChar(255)
 
-  connected Boolean @default(false)
+  socketID String? @unique @db.VarChar(255)
+
+  connected Boolean @default(true)
 
   user    UserAccount  @relation(fields: [userID], references: [id])
 
@@ -86,6 +88,8 @@ model Package {
   id        Int      @id @default(autoincrement())
 
   name   String   @unique @db.VarChar(255)
+
+  description String?   @db.VarChar(255)
 
   uploadDate DateTime @default(now())
 

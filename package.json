@@ -1,21 +1,22 @@
 {
   "name": "rpa-prisma-module",
-  "version": "1.0.0",
+  "version": "1.9.6",
   "description": "Module that encapsulates prisma client to be locally installed and accessible by any microservice",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "npx prisma migrate"
+    "postinstall": "npx prisma generate && npx prisma migrate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^4.16.1",
-    "prisma": "^4.16.1"
+    "prisma": "^4.16.1",
+    "@prisma/client": "4.16.1",
+    "dotenv": "^10.0.0"
   },
   "files": [
-    "prisma",
-    ".env"
+    ".env",
+    "prisma"
   ]
 }
