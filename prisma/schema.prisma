@@ -112,9 +112,13 @@ model ScheduledPackage {
 model Job{
   id Int @id @default(autoincrement())
 
-  createdAt DateTime @default(now())
+  date String
 
-  scheduledDateTime DateTime
+  time String
+
+  dateReceived DateTime
+
+  status String?
 
   package Package @relation(fields: [packageID], references: [id])
 
